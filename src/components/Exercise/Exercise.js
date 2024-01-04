@@ -4,7 +4,7 @@ import ExerciseSearch from "./ExerciseSearch";
 import exercises from "../../Data/Exercise.json";
 
 const Exercise = () => {
-  const [numCards, setNumCards] = useState(20);
+  const [numCards, setNumCards] = useState(8);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -57,7 +57,7 @@ const Exercise = () => {
 
       setSearchResults(filteredResults);
     }, 3000);
-  },[ searchQuery]);
+  }, [searchQuery]);
 
   return (
     <div className="w-11/12 mx-auto p-4">
@@ -70,17 +70,11 @@ const Exercise = () => {
       <ExerciseSearch onSearch={handleSearch} />
 
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12">
-        {searchResults.length > 0
-          ? searchResults
-              .slice(0, numCards)
-              .map((exercise) => (
-                <ExerciseCard key={exercise.id} exercise={exercise} />
-              ))
-          : exercises
-              .slice(0, numCards)
-              .map((exercise) => (
-                <ExerciseCard key={exercise.id} exercise={exercise} />
-              ))}
+        {(searchResults.length > 0 ? searchResults : exercises)
+          .slice(0, numCards)
+          .map((exercise) => (
+            <ExerciseCard key={exercise.id} exercise={exercise} />
+          ))}
       </div>
       {numCards <
         (searchResults.length > 0 ? searchResults : exercises).length && (
