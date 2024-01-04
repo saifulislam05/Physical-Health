@@ -19,7 +19,6 @@ const ExerciseSearch = ({ onSearch }) => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
-      {/* <button onClick={()=>} className="btn btn-neutral text-lg" >Search</button> */}
       </div>
       
 
