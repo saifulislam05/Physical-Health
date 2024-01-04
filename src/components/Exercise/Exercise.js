@@ -1,38 +1,36 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import ExerciseCard from "./ExerciseCard";
 import ExerciseSearch from "./ExerciseSearch";
 import exercises from "../../Data/Exercise.json";
 
 const Exercise = () => {
+  const [exercises, setExercises] = useState([]);
   const [numCards, setNumCards] = useState(8);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    // const fetchData = async () => {
-    //   const url =
-    //     "https://exercisedb.p.rapidapi.com/exercises/bodyPart/back?limit=10";
-    //   const options = {
-    //     method: "GET",
-    //     headers: {
-    //       "X-RapidAPI-Key":
-    //         "a4da324b9fmshe304ef949d33600p13fb2fjsne08b12264f85",
-    //       "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-    //     },
-    //   };
-    //   try {
-    //     const response = await fetch(url, options);
-    //     const data = await response.json();
-    //     setExercises(data);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // };
-    // fetchData();
+     const fetchData = async () => {
+  const url = "https://exercisedb.p.rapidapi.com/exercises/bodyPart/back?limit=30";
+  const headers = {
+    "X-RapidAPI-Key": "a4da324b9fmshe304ef949d33600p13fb2fjsne08b12264f85",
+    "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
+  };
+
+  try {
+    const response = await axios.get(url, { headers });
+    const data = response.data;
+    setExercises(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+    fetchData();
   }, []);
 
   const loadMoreCards = () => {
-    setNumCards(numCards + 23);
+    setNumCards(numCards + 8);
   };
 
   const handleSearch = (query) => {
