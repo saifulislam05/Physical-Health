@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ExerciseCard from "./ExerciseCard";
 import ExerciseSearch from "./ExerciseSearch";
-import exercises from "../../Data/Exercise.json";
 
 const Exercise = () => {
   const [exercises, setExercises] = useState([]);
@@ -55,7 +54,7 @@ const Exercise = () => {
 
       setSearchResults(filteredResults);
     }, 3000);
-  }, [searchQuery]);
+  }, [searchQuery,exercises]);
 
   return (
     <div className="w-11/12 mx-auto p-4">
