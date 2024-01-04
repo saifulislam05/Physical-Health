@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ExerciseCard from "./ExerciseCard";
 import ExerciseSearch from "./ExerciseSearch";
-import exercises from "../../Data/Exercise.json"   
+import exercises from "../../Data/Exercise.json";
 
 const Exercise = () => {
-//   const [exercises, setExercises] = useState([]);
   const [numCards, setNumCards] = useState(20);
-  const [searchQuery, setSearchQuery] = useState(""); // State for the search query
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
@@ -21,7 +20,6 @@ const Exercise = () => {
     //       "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
     //     },
     //   };
-
     //   try {
     //     const response = await fetch(url, options);
     //     const data = await response.json();
@@ -30,33 +28,43 @@ const Exercise = () => {
     //     console.error(error);
     //   }
     // };
-
     // fetchData();
   }, []);
 
   const loadMoreCards = () => {
-    setNumCards(numCards + 23); // Increase the number of cards to display
+    setNumCards(numCards + 23);
   };
 
   const handleSearch = (query) => {
-    setSearchQuery(query); // Update the search query state
+    setSearchQuery(query);
   };
 
-  // Filter exercises based on the search query
   useEffect(() => {
-    const filteredResults = exercises.filter(
-      (exercise) =>
-        exercise.target.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        exercise.bodyPart.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        exercise.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setSearchResults(filteredResults);
-  }, [exercises, searchQuery]);
+    if (searchQuery === "") {
+      setSearchResults(exercises);
+    }
+    let timeout;
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+      // Filter exercises based on the search query
+      const filteredResults = exercises.filter(
+        (exercise) =>
+          exercise.target.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          exercise.bodyPart.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          exercise.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+      setSearchResults(filteredResults);
+    }, 3000);
+  },[ searchQuery]);
 
   return (
     <div className="w-11/12 mx-auto p-4">
       <div className="flex justify-center items-center">
-      <h1 className="text-3xl font-semibold mb-4 text-center border-b-4 w-fit pb-3 border-neutral ">Exercise List</h1>
+        <h1 className="text-3xl font-semibold mb-4 text-center border-b-4 w-fit pb-3 border-neutral ">
+          Exercise List
+        </h1>
       </div>
 
       <ExerciseSearch onSearch={handleSearch} />
@@ -77,10 +85,7 @@ const Exercise = () => {
       {numCards <
         (searchResults.length > 0 ? searchResults : exercises).length && (
         <div className="mt-4 flex justify-center items-center">
-          <button
-            onClick={loadMoreCards}
-            className="btn btn-neutral"
-          >
+          <button onClick={loadMoreCards} className="btn btn-neutral">
             Load More
           </button>
         </div>

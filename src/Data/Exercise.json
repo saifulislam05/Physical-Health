@@ -60,7 +60,7 @@
         ]
     },
     {
-        "bodyPart": "back",
+        "bodyPart": "leg",
         "equipment": "leverage machine",
         "gifUrl": "https://v2.exercisedb.io/image/BXQ44JqnMIfZ7g",
         "id": "0017",
@@ -102,7 +102,7 @@
         ]
     },
     {
-        "bodyPart": "back",
+        "bodyPart": "leg",
         "equipment": "leverage machine",
         "gifUrl": "https://v2.exercisedb.io/image/A4CAeW-EMaZ2WD",
         "id": "1432",
@@ -123,7 +123,7 @@
         ]
     },
     {
-        "bodyPart": "back",
+        "bodyPart": "belly",
         "equipment": "stability ball",
         "gifUrl": "https://v2.exercisedb.io/image/R79ZGphl30KL1t",
         "id": "1314",
@@ -163,7 +163,7 @@
         ]
     },
     {
-        "bodyPart": "back",
+        "bodyPart": "belly",
         "equipment": "body weight",
         "gifUrl": "https://v2.exercisedb.io/image/Id9SxqvMcd5YCm",
         "id": "1405",
@@ -184,7 +184,7 @@
         ]
     },
     {
-        "bodyPart": "back",
+        "bodyPart": "belly",
         "equipment": "band",
         "gifUrl": "https://v2.exercisedb.io/image/7SrUvjighfkYC7",
         "id": "0970",

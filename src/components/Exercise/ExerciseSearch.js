@@ -6,19 +6,20 @@ const ExerciseSearch = ({ onSearch }) => {
   const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
+    onSearch(searchQuery);
   };
 
   return (
     <div className="mb-4 flex justify-center items-center">
-      <div className="flex gap-4">
+      <div className="w-full max-w-xs">
         <input
         type="text"
-        placeholder="Type target, body part, or exercise"
-        className="input input-neutral input-bordered w-full max-w-sm mx-auto"
+        placeholder="Search by target, body part, or exercise"
+        className="input input-neutral input-bordered w-full"
         value={searchQuery}
         onChange={handleSearchChange}
       />
-      <button onClick={()=>onSearch(searchQuery)} className="btn btn-neutral text-lg p-2 " >Search</button>
+      {/* <button onClick={()=>} className="btn btn-neutral text-lg" >Search</button> */}
       </div>
       
 
