@@ -14,7 +14,7 @@ const Exercise = () => {
      const fetchData = async () => {
   const url = "https://exercisedb.p.rapidapi.com/exercises/bodyPart/back?limit=30";
   const headers = {
-    "X-RapidAPI-Key": "a4da324b9fmshe304ef949d33600p13fb2fjsne08b12264f85",
+    "X-RapidAPI-Key": process.env.REACT_APP_RAPIDAPI_KEY,
     "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
   };
 
